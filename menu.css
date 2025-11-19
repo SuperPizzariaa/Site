@@ -1,0 +1,223 @@
+/*     Cenas cursor trabalhar     */
+
+cursor {
+    cursor: none;
+    z-index: -10000;
+}
+
+:hover{
+    cursor: none;
+}
+
+
+/*  outras cenas  */
+
+body {
+    background: #ff6b35;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #5c94fc 0%, #3c5aa6 100%);
+    color: rgb(255, 255, 255);
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 12.3%;
+    padding: 1rem 2.3rem;
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 3px solid #fbd000;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.nav-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 90%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Remove todos os controlos do vídeo */
+.nav-video::-webkit-media-controls {
+    display: none !important;
+}
+
+.nav-video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+.nav-video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+.nav-video::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+.nav-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+}
+
+.nav-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /*background: rgba(248, 177, 177, 0.85);*/
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
+
+.logo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fbd000;
+    text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+    align-items: center;
+    gap: 0.8rem;
+    z-index: 100;
+}
+
+.logo-img {
+    position:fixed;
+    top: -9.5px;
+    left: 20px;
+    height: 125px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+    z-index: 100;
+}
+
+.logo:hover .logo-img {
+    transform: rotate(15deg) scale(1.1);
+}
+
+.logo span {
+    display: inline-block;
+}
+
+.nav-links {
+    right: 0%;
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    position: relative;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #fbd000;
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+    cursor: none;
+}
+
+.nav-links a:hover {
+    color: #fbd000;
+    transform: translateY(-2px);
+    cursor: none;
+}
+
+main {
+    flex: 1;
+    padding-top: 70px;
+}
+
+/* cenas do footer */
+
+footer {
+    background: linear-gradient(180deg, #dc1414 0%, #a01010 100%);
+    border-top: 4px solid #fbd000;
+    padding: 2rem;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: #fbd000;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    text-shadow: 2px 2px 0px #000;
+}
+
+.footer-section p {
+    opacity: 0.95;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.footer-bottom {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid rgba(251, 208, 0, 0.4);
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav {
+        padding: 0.8rem 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1.4rem;
+    }
+    
+    .nav-links {
+        gap: 1rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.95rem;
+    }
+}

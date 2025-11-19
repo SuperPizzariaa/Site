@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Pizzaria</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cursor.css">
+    <link rel="stylesheet" href="supercss.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #fbd000;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            background: #fbd000;
+            color: #dc1414;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 3px solid #000;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s backwards;
+            box-shadow: 6px 6px 0px #000;
+        }
+
+        .cta-button:hover {
+            background: #fff;
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0px #000;
+            cursor: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <nav>
+        <video class="nav-video" autoplay muted loop playsinline>
+            <source class="video" src="RunningMario.mp4" type="video/mp4">
+        </video>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="logo.png" alt="Super Pizzaria Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="ementa.html">Sabores</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <h1>Bem-vindo à Super Pizzaria</h1>
+            <p>As melhores pizzas artesanais da cidade, feitas com ingredientes frescos e muito amor</p>
+            <a href="ementa.html" class="cta-button">Ver Nossos Sabores</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Localização</h3>
+                <p>Vilar do paraiso, Gaia</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p>+351 676 767 676</p>
+            </div>
+            <div class="footer-section">
+                <h3>⏰ Horário</h3>
+                <p>Seg-Dom: 12h-23h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Super Pizzaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+    <script src="video-autoplay.js"></script>
+</body>
+</html>
