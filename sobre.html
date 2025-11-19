@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cursor.css">
+    <link rel="stylesheet" href="supercss.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Adicionar dentro da tag <style> no sobre.html */
+
+.content {
+    padding: 120px 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content h1 {
+    font-size: 3.5rem;
+    color: #fbd000;
+    text-align: center;
+    margin: 3rem 0 2rem;
+    text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+    animation: fadeInDown 0.6s ease;
+    position: relative;
+}
+
+.content h1::after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 5px;
+    background: #dc1414;
+    margin: 1rem auto;
+    border-radius: 5px;
+    box-shadow: 0 3px 0 #000;
+}
+
+.content h3 {
+    font-size: 1.4rem;
+    line-height: 2;
+    color: #fff;
+    text-align: center;
+    margin: 1.5rem auto;
+    max-width: 900px;
+    background: rgba(220, 20, 20, 0.6);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 3px solid #fbd000;
+    box-shadow: 4px 4px 0px #000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 0.8s ease;
+}
+
+.content h1:first-of-type {
+    margin-top: 1rem;
+}
+
+/* Animação especial para os valores */
+.content h1:nth-of-type(4) + h3 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.content h1:nth-of-type(4) + h3::before {
+    content: '🏆';
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Efeitos de hover */
+.content h3:hover {
+    transform: translateY(-5px);
+    box-shadow: 6px 6px 0px #000, 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* Animações */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Delay nas animações para efeito cascata */
+.content h3:nth-of-type(1) { animation-delay: 0.1s; }
+.content h3:nth-of-type(2) { animation-delay: 0.2s; }
+.content h3:nth-of-type(3) { animation-delay: 0.3s; }
+.content h3:nth-of-type(4) { animation-delay: 0.4s; }
+.content h3:nth-of-type(5) { animation-delay: 0.5s; }
+.content h3:nth-of-type(6) { animation-delay: 0.6s; }
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .content {
+        padding: 100px 1rem 2rem;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+        margin: 2rem 0 1.5rem;
+    }
+
+    .content h1::after {
+        width: 100px;
+        height: 4px;
+    }
+
+    .content h3 {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+        line-height: 1.8;
+        border-width: 2px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <nav>
+        <video class="nav-video" autoplay muted loop playsinline>
+            <source class="video" src="RunningMario.mp4" type="video/mp4">
+        </video>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="logo.png" alt="Super Pizzaria Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="ementa.html">Sabores</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+        <h1>Quem nós somos</h1>
+        <h3>Aqui na Super Pizzaria, cada fatia é uma aventura e cada ingrediente tem nível épico!
+            A nossa casa nasceu da imaginação e paixão de Mário, um sonhador de Canedo City que sempre acreditou que a comida pode ser uma entrada para outros mundos.
+        </h3>
+
+        <h1>A Nossa História</h1>
+        <h3>
+            A ideia surgiu quando Mário, o nosso Deus e Salvador, desde cedo apaixonado por gastronomia e pelo espírito criativo que sempre o acompanhou, decidiu transformar essa inspiração num projeto real. Depois de anos a aperfeiçoar receitas, experiências e combinações de sabores, percebeu que queria criar um restaurante que fosse mais do que um sítio para comer queria um lugar acolhedor, com identidade própria e onde cada cliente pudesse exprimir a sua admiração pelo Super Mário.
+            
+            Assim nasceu a Super Pizzaria, um espaço descontraído, moderno e pensado para quem aprecia não só boa comida, mas também o Mário.
+        </h3>
+
+        <h3>Mas esta aventura não foi feita sozinho. Ao lado de Mário estiveram duas mentes igualmente visionárias: Matilde Couto e Mafalda Lopes, as cofundadoras que trouxeram equilíbrio, criatividade e uma dose saudável de sensatez ao caos genial de Mário.
+            Matilde, com o seu olhar atento ao detalhe e talento natural para transformar ideias malucas em realidade prática, e Mafalda, com a sua energia contagiante, organização impecável e visão estratégica, ajudaram a moldar a Super Pizzaria desde o primeiro esboço até ao primeiro forno aceso.</h3>
+
+        <h3>
+            Mais do que o fundador, Deus e Salvador da Humanidade, Mário é a alma do projeto. A sua dedicação, criatividade e aquela pitada de espírito aventureiro, fazem da Super Pizzaria um lugar especial, cheio de personalidade, sabor, autenticidade e templo espiritual de adoração a si mesmo.
+        </h3>
+
+        <h1>VALORES</h1>
+        <h3>
+            Qualidade <br>
+            Rapidez <br>
+            Satisfação <br>
+            Diversão <br>
+            Respeito <br>
+            Inovação <br>
+            Sustentabilidade
+        </h3>
+
+        <h1>MISSÃO</h1>
+        <h3>Servir refeições rápidas e saborosas num espaço agradável e divertido.</h3>
+
+        <h1>VISÃO</h1>
+        <h3>Ser a pizzaria de referência em Vila Nova de Gaia, pela qualidade, rapidez e ambiente temático.</h3>
+    </div>
+
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Localização</h3>
+                <p>Vila Nova de Gaia, Gaia</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p>+351 676 767 676</p>
+            </div>
+            <div class="footer-section">
+                <h3>⏰ Horário</h3>
+                <p>Seg-Dom: 12h-23h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Super Pizzaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+    <script src="video-autoplay.js"></script>
+</body>
+</html>
