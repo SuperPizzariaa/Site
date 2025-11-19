@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabores - Super Pizzaria</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cursor.css">
+    <link rel="stylesheet" href="supercss.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .pizza-container {
+            display: flex;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+            padding-top: 80px;
+            padding-bottom: 100px;
+            position: relative;
+        }
+
+        .pizza-image-section {
+            width: 55%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .pizza-image {
+            width: 115%;
+            height: auto;
+            border-radius: 50%;
+            object-fit: cover;
+            transform-origin: center;
+            position: relative;
+            left: -5%;
+            filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+        }
+
+        .pizza-image.rotating {
+            animation: spinAndFade 1s ease-in-out;
+        }
+
+        .pizza-info-section {
+            width: 48%;
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            right: 50px;
+        }
+
+        .pizza-name {
+            font-size: 4rem;
+            color: #fbd000;
+            margin-bottom: 2rem;
+            text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.5s forwards;
+        }
+
+        .pizza-info-section.updating .pizza-name {
+            opacity: 0;
+            animation: none;
+        }
+
+        .ingredients-container {
+            opacity: 0;
+            animation: fadeIn 0.5s ease 0.7s forwards;
+            background: rgba(220, 20, 20, 0.6);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 3px solid #fbd000;
+        }
+
+        .pizza-info-section.updating .ingredients-container {
+            opacity: 0;
+            animation: none;
+        }
+
+        .ingredients-container h3 {
+            font-size: 2rem;
+            color: #fbd000;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .ingredients-list {
+            list-style: none;
+            font-size: 1.4rem;
+            line-height: 2.5;
+        }
+
+        .ingredients-list li {
+            padding-left: 2rem;
+            position: relative;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .ingredients-list li::before {
+            content: '🍕';
+            position: absolute;
+            left: 0;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 4rem;
+            right: 4rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .nav-button {
+            background: #fbd000;
+            border: 3px solid #000;
+            color: #000;
+            font-size: 2rem;
+            font-weight: bold;
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .nav-button:hover:not(:disabled) {
+            background: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .pizza-counter {
+            font-size: 1.5rem;
+            color: #fbd000;
+            font-weight: bold;
+            text-shadow: 2px 2px 0px #000;
+            background: rgba(220, 20, 20, 0.8);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            border: 2px solid #fbd000;
+        }
+
+        @keyframes spinAndFade {
+            0% {
+                transform: rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: rotate(180deg) scale(0.8);
+                opacity: 0.3;
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pizza-container {
+                flex-direction: column;
+                padding-bottom: 120px;
+            }
+
+            .pizza-image-section {
+                width: 100%;
+                height: 50%;
+            }
+
+            .pizza-image {
+                width: 100%;
+                left: 0;
+            }
+
+            .pizza-info-section {
+                width: 100%;
+                padding: 2rem;
+            }
+
+            .pizza-name {
+                font-size: 2.5rem;
+            }
+
+            .ingredients-list {
+                font-size: 1.1rem;
+            }
+
+            .navigation {
+                bottom: 1rem;
+                right: 50%;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <video class="nav-video" autoplay muted loop playsinline>
+            <source class="video" src="RunningMario.mp4" type="video/mp4">
+        </video>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="logo.png" alt="Super Pizzaria Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="ementa.html">Sabores</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="pizza-container">
+            <div class="pizza-image-section">
+                <img id="pizzaImage" class="pizza-image" src="" alt="Pizza">
+            </div>
+
+            <div id="pizzaInfo" class="pizza-info-section">
+                <h1 class="pizza-name" id="pizzaName">Margherita</h1>
+                <div class="ingredients-container">
+                    <h3>Ingredientes:</h3>
+                    <ul class="ingredients-list" id="ingredientsList">
+                        <li>Molho de tomate</li>
+                        <li>Mozzarella fresca</li>
+                        <li>Manjericão</li>
+                        <li>Azeite extra virgem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="navigation">
+                <button class="nav-button" id="prevBtn" onclick="previousPizza()">‹</button>
+                <div class="pizza-counter">
+                    <span id="currentPizza">1</span> / <span id="totalPizzas">6</span>
+                </div>
+                <button class="nav-button" id="nextBtn" onclick="nextPizza()">›</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Localização</h3>
+                <p>Vilar do paraiso, Gaia</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p>+351 676 767 676</p>
+            </div>
+            <div class="footer-section">
+                <h3>⏰ Horário</h3>
+                <p>Seg-Dom: 12h-23h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Super Pizzaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const pizzas = [
+            {
+                name: "Italiana",
+                image: "pz1.png",
+                ingredients: ["tomate", "azeitonas", "calabresa", "cogumelos", "pimentos"]
+            },
+            {
+                name: "...",
+                image: "pz2.png",
+                ingredients: ["frango", "cogumelos", "tomate"]
+            },
+            {
+                name: "Pimentonni",
+                image: "pz3.png",
+                ingredients: ["pepperoni", "pimentão"]
+            },
+            {
+                name: "Vegetariana",
+                image: "pz4.png",
+                ingredients: ["Tomate", "Pimentos", "Cogumelos", "Pepino"]
+            },
+            {
+                name: "Portuguesa",
+                image: "pz5.png",
+                ingredients: ["cogumelos", "presunto"]
+            }
+        ];
+
+        let currentIndex = 0;
+        let isAnimating = false;
+
+        function updatePizzaDisplay() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const img = document.getElementById('pizzaImage');
+            const infoSection = document.getElementById('pizzaInfo');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+
+            infoSection.classList.add('updating');
+            img.classList.add('rotating');
+
+            setTimeout(() => {
+                const pizza = pizzas[currentIndex];
+                
+                img.src = pizza.image;
+                document.getElementById('pizzaName').textContent = pizza.name;
+                
+                const list = document.getElementById('ingredientsList');
+                list.innerHTML = '';
+                pizza.ingredients.forEach(ingredient => {
+                    const li = document.createElement('li');
+                    li.textContent = ingredient;
+                    list.appendChild(li);
+                });
+
+                document.getElementById('currentPizza').textContent = currentIndex + 1;
+                infoSection.classList.remove('updating');
+            }, 500);
+
+            setTimeout(() => {
+                img.classList.remove('rotating');
+                isAnimating = false;
+                prevBtn.disabled = false;
+                nextBtn.disabled = false;
+            }, 1000);
+        }
+
+        function nextPizza() {
+            if (isAnimating) return;
+            currentIndex = (currentIndex + 1) % pizzas.length;
+            updatePizzaDisplay();
+        }
+
+        function previousPizza() {
+            if (isAnimating) return;
+            currentIndex = (currentIndex - 1 + pizzas.length) % pizzas.length;
+            updatePizzaDisplay();
+        }
+
+        document.getElementById('totalPizzas').textContent = pizzas.length;
+        updatePizzaDisplay();
+    </script>
+
+    <script src="cursor.js"></script>
+    <script src="video-autoplay.js"></script>
+</body>
+</html>

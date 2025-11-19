@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O nosso estabelecimento</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cursor.css">
+    <link rel="stylesheet" href="supercss.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Adicionar dentro da tag <style> no galeria.html */
+
+.content {
+    padding: 120px 2rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content h1 {
+    font-size: 4rem;
+    color: #fbd000;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow: 4px 4px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000;
+    animation: fadeInDown 0.8s ease;
+}
+
+.img-restau {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 20px;
+    margin: 2rem auto;
+    display: block;
+    border: 5px solid #fbd000;
+    box-shadow: 8px 8px 0px #000, 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.8s ease;
+}
+
+.img-restau:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 12px 12px 0px #000, 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.img-restau:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.img-restau:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.img-restau:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding: 100px 1rem 2rem;
+    }
+
+    .content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .img-restau {
+        max-width: 100%;
+        margin: 1.5rem auto;
+        border-width: 3px;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <video class="nav-video" autoplay muted loop playsinline>
+            <source class="video" src="RunningMario.mp4" type="video/mp4">
+        </video>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="logo.png" alt="Super Pizzaria Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="ementa.html">Sabores</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+    </nav>
+
+    <div class="content">
+
+        <img src="pizaria1.png" alt="Foto do estabelecimento" class="img-restau">
+
+        <img src="pizaria2.png" alt="Foto do estabelecimento" class="img-restau">
+
+        <img src="pizaria3.png" alt="Foto do estabelecimento" class="img-restau">
+
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Localização</h3>
+                <p>Vila Nova de Gaia, Gaia</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p>+351 676 767 676</p>
+            </div>
+            <div class="footer-section">
+                <h3>⏰ Horário</h3>
+                <p>Seg-Dom: 12h-23h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Super Pizzaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="cursor.js"></script>
+    <script src="video-autoplay.js"></script>
+</body>
+</html>

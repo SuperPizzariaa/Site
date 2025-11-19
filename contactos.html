@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Super Pizzaria</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="cursor.css">
+    <link rel="stylesheet" href="supercss.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .contact-container {
+            margin-top: 100px;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(220, 20, 20, 0.9);
+            border: 4px solid #fbd000;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            animation: bounceIn 0.8s ease;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-header h1 {
+            font-size: 3rem;
+            color: #fbd000;
+            text-shadow: 3px 3px 0px #000, -1px -1px 0px #000, 1px -1px 0px #000, -1px 1px 0px #000;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid #fbd000;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 16px rgba(251, 208, 0, 0.3);
+        }
+
+        .contact-card h3 {
+            font-size: 1.8rem;
+            color: #fbd000;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 0px #000;
+        }
+
+        .contact-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid #fbd000;
+            border-radius: 15px;
+            padding: 2rem;
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            color: #fbd000;
+            text-shadow: 2px 2px 0px #000;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #fbd000;
+            text-shadow: 1px 1px 0px #000;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #fbd000;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: #fbd000;
+            color: #dc1414;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 3px solid #000;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            text-shadow: none;
+            box-shadow: 4px 4px 0px #000;
+        }
+
+        .submit-button:hover:not(:disabled) {
+            background: #fff;
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000;
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .status-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .status-message.success {
+            background: rgba(46, 204, 113, 0.9);
+            border: 2px solid #27ae60;
+            display: block;
+        }
+
+        .status-message.error {
+            background: rgba(231, 76, 60, 0.9);
+            border: 2px solid #c0392b;
+            display: block;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .contact-header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <video class="nav-video" autoplay muted loop playsinline>
+            <source class="video" src="RunningMario.mp4" type="video/mp4">
+        </video>
+        <div class="nav-overlay"></div>
+        <div class="logo">
+            <img src="logo.png" alt="Super Pizzaria Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="ementa.html">Sabores</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="galeria.html">Galeria</a></li>
+            <li><a href="contactos.html">Contactos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="contact-container">
+            <div class="contact-header">
+                <h1>Entre em Contacto!</h1>
+                <p>Estamos sempre prontos para servir você</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>📍 Localização</h3>
+                    <p>Vila Nova de Gaia</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>📞 Telefone</h3>
+                    <p>+351 676 767 676<br>Seg-Dom: 12h-23h</p>
+                </div>
+
+                <div class="contact-card">
+                    <h3>✉️ Email</h3>
+                    <p>info@superpizzaria.pt<br>encomendas@superpizzaria.pt</p>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Envie-nos uma Mensagem</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensagem:</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button" id="submitBtn">Enviar Mensagem</button>
+                    
+                    <div class="status-message" id="statusMessage"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>📍 Localização</h3>
+                <p>Vila Nova de Gaia, Gaia</p>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Contacto</h3>
+                <p>+351 676 767 676</p>
+            </div>
+            <div class="footer-section">
+                <h3>⏰ Horário</h3>
+                <p>Seg-Dom: 12h-23h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Super Pizzaria. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- EmailJS SDK - Versão atualizada -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        // Inicializar EmailJS
+        (function() {
+            emailjs.init("ZpQt_D6XU9rl-1-7i"); // Sua Public Key
+        })();
+
+        // Handler do formulário
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const submitBtn = document.getElementById("submitBtn");
+            const statusMessage = document.getElementById("statusMessage");
+            
+            // Desabilitar botão durante envio
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Enviando...";
+            statusMessage.style.display = "none";
+            
+            // Parâmetros do template
+            const templateParams = {
+                from_name: document.getElementById("name").value,
+                from_email: document.getElementById("email").value,
+                message: document.getElementById("message").value,
+                to_name: "Super Pizzaria" // Opcional
+            };
+            
+            // Enviar email
+            emailjs.send(
+                "service_kks4sx4",    // Service ID
+                "template_fzq9qrh",   // Template ID
+                templateParams
+            )
+            .then(function(response) {
+                console.log("Sucesso!", response.status, response.text);
+                
+                // Mostrar mensagem de sucesso
+                statusMessage.textContent = "✓ Mensagem enviada com sucesso! Entraremos em contacto em breve.";
+                statusMessage.className = "status-message success";
+                
+                // Limpar formulário
+                document.getElementById("contactForm").reset();
+                
+                // Reativar botão
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar Mensagem";
+                
+                // Esconder mensagem após 5 segundos
+                setTimeout(() => {
+                    statusMessage.style.display = "none";
+                }, 5000);
+                
+            }, function(error) {
+                console.error("Erro ao enviar:", error);
+                
+                // Mostrar mensagem de erro
+                statusMessage.textContent = "✗ Erro ao enviar mensagem. Por favor, tente novamente.";
+                statusMessage.className = "status-message error";
+                
+                // Reativar botão
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Enviar Mensagem";
+                
+                // Esconder mensagem após 5 segundos
+                setTimeout(() => {
+                    statusMessage.style.display = "none";
+                }, 5000);
+            });
+        });
+    </script>
+
+    <script src="cursor.js"></script>
+    <script src="video-autoplay.js"></script>
+</body>
+</html>

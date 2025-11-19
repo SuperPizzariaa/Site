@@ -1,0 +1,30 @@
+/* Cursor Personalizado */
+* {
+    cursor: none !important;
+}
+
+body {
+    cursor: none !important;
+}
+
+.custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+    transition: transform 0.05s ease;
+    will-change: transform;
+    top: 0;
+    left: 0;
+}
+
+.custom-cursor.clicking {
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+/* Garante que todos os elementos não mostrem cursor */
+a, button, input, textarea, select {
+    cursor: none !important;
+}
